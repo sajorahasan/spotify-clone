@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Spotify 3.0",
+    "slug": "Spotify",
+    "version": "1.0.0",
+    "scheme": "spotify",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "com.sajorahasan.spotify",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app accesses the camera to capture your mood."
+      }
+    },
+    "android": {
+      "package": "com.sajorahasan.spotify",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": ["android.permission.CAMERA", "android.permission.RECORD_AUDIO"]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          },
+          "ios": {}
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    }
+  }
+}
