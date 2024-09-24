@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { View, SafeAreaView, StyleSheet, StyleProp, ViewStyle, StatusBar } from 'react-native';
 
 import { Colors } from '@/utils/Constants';
 
@@ -11,6 +11,7 @@ interface CustomSafeAreaViewProps {
 const CustomSafeAreaView = ({ children, style }: CustomSafeAreaViewProps) => {
   return (
     <View style={[styles.container, style]}>
+      <StatusBar barStyle="light-content" />
       <SafeAreaView />
       {children}
     </View>

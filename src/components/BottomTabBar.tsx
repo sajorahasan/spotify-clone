@@ -1,20 +1,28 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import ScalePress from '@/components/ScalePress';
 import TabIcon from '@/components/TabIcon';
+import { useSharedState } from '@/context/SharedContext';
 import { BOTTOM_TAB_HEIGHT, Colors } from '@/utils/Constants';
 
 const BottomTabBar = (props: BottomTabBarProps) => {
   const { state, navigation } = props;
 
+  const { translationY } = useSharedState();
   const insets = useSafeAreaInsets();
 
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: -translationY.value }],
+    };
+  });
+
   return (
-    <Animated.View style={[styles.container, { paddingBottom: insets.bottom }]}>
+    <Animated.View style={[styles.container, animatedStyle, { paddingBottom: insets.bottom }]}>
       {state.routes.map((route, index) => {
         const isFocused = state.index === index;
 
