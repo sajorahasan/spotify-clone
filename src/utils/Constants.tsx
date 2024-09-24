@@ -1,5 +1,7 @@
 import { Platform } from 'react-native';
 
+import { screenHeight } from '@/utils/Scaling';
+
 export enum Colors {
   primary = '#1CD760',
   background = '#000',
@@ -16,7 +18,9 @@ export enum Fonts {
   Bold = 'Satoshi-Bold',
 }
 
-export const BOTTOM_TAB_HEIGHT = Platform.OS == 'ios' ? 90 : 70;
+export const BOTTOM_TAB_HEIGHT = Platform.OS === 'ios' ? 90 : 70;
+export const MIN_PLAYER_HEIGHT = BOTTOM_TAB_HEIGHT + 60;
+export const MAX_PLAYER_HEIGHT = screenHeight;
 
 export const darkenColor = (hex: string, amount = 100) => {
   let color = hex?.replace('#', '');
